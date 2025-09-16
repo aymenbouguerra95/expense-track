@@ -1,0 +1,89 @@
+مرحلة 1: التخطيط
+
+تحديد المستخدمين:
+
+Roles: Individual / Employee / Manager / Admin
+
+تحديد ميزات MVP:
+
+تسجيل مصاريف / دخل
+
+عرض تقارير بسيطة للموبايل
+
+Dashboard ويب للموافقة والتقارير
+
+مرحلة 2: تصميم قاعدة البيانات
+
+users (id, name, email, password, role)
+
+roles (Employee, Manager, Admin)
+
+transactions (id, user_id, amount, category_id, project_id, date, note, status)
+
+categories (id, name, type)
+
+projects (id, name, description, manager_id)
+
+budgets (id, user_id/project_id, category_id, amount, period)
+
+approvals (transaction_id, approver_id, status, comment)
+
+مرحلة 3: Backend (NestJS + PostgreSQL)
+
+Auth: register / login (JWT)
+
+CRUD للمصاريف والفئات والمشاريع
+
+Approval workflow للمصاريف
+
+APIs للتقارير للموبايل والـ Dashboard
+
+مرحلة 4: تطبيق الموبايل (Flutter)
+
+شاشة تسجيل المصاريف / دخل
+
+قائمة المصاريف مع فلترة حسب التاريخ والفئة
+
+ملخّص يومي / أسبوعي / شهري
+
+تنبيهات عند تجاوز الميزانية
+
+اتصال بالـ Backend (dio + provider/riverpod)
+
+مرحلة 5: Dashboard ويب
+
+Overview: ملخّص المصاريف لكل موظف / مشروع
+
+Transactions: عرض، فلترة، Approve/Reject
+
+Categories & Projects management
+
+Reports: Charts (Pie / Bar), تصدير PDF/CSV
+
+إدارة المستخدمين و Roles
+
+مرحلة 6: اختبار النظام
+
+اختبار تسجيل المصاريف والتقارير لكل Role
+
+اختبار Approval workflow
+
+اختبار واجهات الموبايل والويب
+
+مرحلة 7: النشر (Deployment)
+
+Docker لكل خدمة (Backend + Dashboard)
+
+نشر على Cloud (OVH أو AWS)
+
+HTTPS + متغيرات البيئة + نسخ احتياطية للـ DB
+
+مرحلة 8: تحسينات لاحقة
+
+Recurring expenses
+
+Push / Email notifications
+
+اتصال مع حسابات بنكية (اختياري)
+
+نموذج اشتراكات

@@ -1,0 +1,66 @@
+[Login/Register] 
+       |
+       v
+
+[Role: Individual / Employee / Manager / Admin]
+
+**الموبايل (Flutter)
+
+[Home Screen / Dashboard شخصي]
+       |
+       v
+[Add Transaction] --> [transactions Table]
+       |
+       v
+[View Transactions] --> [Filter by Date / Category / Project]
+       |
+       v
+[Summary Reports] --> [Charts: Pie/Bar]
+       |
+       v
+[Notifications / Budget Alerts]
+
+**Backend (NestJS + PostgreSQL)
+[Mobile App / Dashboard Web]
+       |
+       v
+[REST API]
+       |
+       v
++---------------------------+
+| users Table               |
+| roles Table               |
+| transactions Table        |
+| categories Table          |
+| projects Table            |
+| budgets Table             |
+| approvals Table           |
++---------------------------+
+
+**Dashboard Web
+
+[Login] 
+   |
+   v
+[Overview / Summary] 
+   |
+   +--> [Transactions List] -- Approve/Reject (Managers)
+   |
+   +--> [Reports / Charts] -- Export PDF/CSV
+   |
+   +--> [Manage Categories / Projects / Users]
+
+**Deployment
+
+[Backend API] + [Dashboard Web] + [Flutter App]
+       |
+       v
+[Docker Containers]
+       |
+       v
+[Cloud Server (OVH / AWS / Azure)]
+       |
+       v
+[HTTPS / Environment Variables / Backups]
+
+
