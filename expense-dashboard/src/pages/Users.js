@@ -6,9 +6,13 @@ function Users() {
 
   useEffect(() => {
     api.get('/users')
-      .then(res => setUsers(res.data))
+      .then(res => {
+        console.log("DATA =>", res.data);
+        setUsers(res.data);
+      })
       .catch(err => console.error(err));
   }, []);
+  
 
   return (
     <div className="p-8 bg-gray-50 min-h-screen">

@@ -4,6 +4,6 @@ export class CreateCategoryDto {
   @ApiProperty({ example: 'Food', description: 'اسم التصنيف' })
   name: string;
 
-  @ApiProperty({ example: 'Expenses related to food and dining', description: 'وصف التصنيف' })
-  description: string;
+  @ApiProperty({ example: 'Expense', description: 'نوع التصنيف (Income أو Expense)' })
+  type: string;
 }

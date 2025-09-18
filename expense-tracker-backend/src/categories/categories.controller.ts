@@ -23,7 +23,7 @@ export class CategoriesController {
   create(@Body() createCategoryDto: CreateCategoryDto): Promise<Category> {
     const category = new Category();
     category.name = createCategoryDto.name;
-    category.type = createCategoryDto.description;
+    category.type = createCategoryDto.type;
     return this.categoriesService.create(category);
   }
 
