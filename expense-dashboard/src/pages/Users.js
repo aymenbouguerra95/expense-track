@@ -1,18 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import  api  from '../services/api';
+import { getUsers, deleteUser } from '../services/userService';
 
 function Users() {
   const [users, setUsers] = useState([]);
 
+  const fetchUsers = async () => {
+    try {
+      const data = await getUsers();
+      setUsers(data);
+    } catch (err) {
+      console.error(err);
+      alert('Failed to fetch users');
+    }
+  };
+
   useEffect(() => {
-    api.get('/users')
-      .then(res => {
-        console.log("DATA =>", res.data);
-        setUsers(res.data);
-      })
-      .catch(err => console.error(err));
+    fetchUsers();
   }, []);
-  
+
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure to delete this user?')) return;
+    try {
+      await deleteUser(id);
+      fetchUsers();
+    } catch (err) {
+      console.error(err);
+      alert('Failed to delete user');
+    }
+  };
 
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
@@ -31,8 +46,14 @@ function Users() {
                     <p className="text-gray-600">{user.email}</p>
                   </div>
                   <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {user.role.name}
+                    {user.role?.name || '-'}
                   </span>
+                  <button
+                    onClick={() => handleDelete(user.id)}
+                    className="bg-red-500 text-white px-3 py-1 rounded ml-4"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             ))}
